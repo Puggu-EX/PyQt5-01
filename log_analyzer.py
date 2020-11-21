@@ -136,7 +136,6 @@ class MainWindow(QMainWindow):
         dialog = QFileDialog()
         dialog.setNameFilters(["Text files (*.txt)", "Log Files (*.LOG), (*.log)"])
         dialog.selectNameFilter("Text files (*.txt)")
-        dialog.setDirectory("C:\\users\\isaac n. dominguez\\desktop")
 
         if dialog.exec_():
             filenames = dialog.selectedFiles()
