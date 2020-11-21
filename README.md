@@ -1,4 +1,6 @@
-## Objective
+#Ojbective
+Create a GUI program from the ground up that can be used to analyze log files. There are existing solutions readily available for this purpose; however, as project for the purpoose challenging myself and creating a solution to address every need I have decided to create my own solution.
+## CO
 1) Open File
 2) Take A Single Line
 3) Take The Next Word(s) Between The Given Parameters
