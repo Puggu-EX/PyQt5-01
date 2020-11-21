@@ -1,14 +1,15 @@
 # Ojbective
 Create a GUI program from the ground up that can be used to analyze log files. There are existing solutions readily available for this purpose; however, as project for the purpoose challenging myself and creating a solution to address every need I have decided to create my own solution.
-## CO
-1) Open File
-2) Take A Single Line
+
+## Current Objective
+1) ~~Open File~~
+2) ~~Take A Single Line~~
 3) Take The Next Word(s) Between The Given Parameters
 
 ## TODOS:
 1) Because there is no (hasNext) function in Python like in Java, there must be a way to
 check how many lines there are.
-1) Fixed! Import File, Open File, `saidFile.readlines()`, length of the array is the length of the file. 
+    1) Fixed! Import File, Open File, `saidFile.readlines()`, length of the array is the length of the file. 
 
 Example:
 
