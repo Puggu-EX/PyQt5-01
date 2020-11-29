@@ -11,12 +11,14 @@ Create a GUI program from the ground up that can be used to analyze log files. T
 check how many lines there are.
     1) Fixed! Import File, Open File, `saidFile.readlines()`, length of the array is the length of the file. 
 
-Example:
-
-`file = "C:\\Users\\USER\\Desktop\\example.txt"`  
-`f = open(file, "r")`  
-`f_list = f.readlines()`  
-`print(len(f_list))`
+        Example:
+        
+        `file = "C:\\Users\\USER\\Desktop\\example.txt"`  
+        `f = open(file, "r")`  
+        `f_list = f.readlines()`  
+        `print(len(f_list))`
+        
+2) How will columns be identified. (Parameters)
 
 * Selecting OBJECTS can be done in a cyclical manner. Parameters can be given for every column and the program
 can just cycle through the parameters until the end of the file.

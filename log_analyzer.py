@@ -4,23 +4,7 @@ from PyQt5.QtCore import *
 from PyQt5.QtGui import *
 from PyQt5.QtWidgets import *
 
-from text_handler import ParamDialog
-
-
-class CWindow(QWidget):
-    def __init__(self, *args, **kwargs):
-        super(CWindow, self).__init__(*args, **kwargs)
-        self.setWindowTitle("Another Window")
-
-        self.window_layout = QFormLayout()
-        self.setLayout(self.window_layout)
-
-        self.label = QLineEdit()
-        self.window_layout.addRow("testing", self.label)
-
-        # self.tab = QTabWidget()
-        # self.window_layout.addWidget(self.tab, alignment=Qt.AlignLeft)
-        # self.setLayout(self.window_layout)
+from text_handler import ParamDialog, CWindow
 
 
 class MainWindow(QMainWindow):
@@ -99,12 +83,12 @@ class MainWindow(QMainWindow):
         self.file_cols_line.returnPressed.connect(self.col_num_given)
         # self.file_cols_line.setFixedWidth(50)
 
-        fa_layout.addWidget(self.file_rows_label, 0, 0, Qt.AlignTop)
-        fa_layout.addWidget(self.file_rows_line, 0, 1, Qt.AlignTop | Qt.AlignLeft)
-        fa_layout.addWidget(self.file_cols_label, 0, 2, Qt.AlignTop)
-        fa_layout.addWidget(self.file_cols_line, 0, 3, Qt.AlignTop | Qt.AlignLeft)
+        fa_layout.addWidget(self.file_rows_label, 0, 0)
+        fa_layout.addWidget(self.file_rows_line, 0, 1)
+        fa_layout.addWidget(self.file_cols_label, 0, 2)
+        fa_layout.addWidget(self.file_cols_line, 0, 3)
 
-        sublayout_2.addWidget(self.file_attributes)
+        sublayout_2.addWidget(self.file_attributes, Qt.AlignCenter)
 
         """Parameters"""
         self.parameters = QGroupBox("Parameters")
@@ -185,7 +169,7 @@ class MainWindow(QMainWindow):
 
     def parameters_dialog(self):
         if self.w is None:
-            self.w = ParamDialog()
+            self.w = ParamDialog(self.file_line.text())
             self.w.show()
         else:
             self.w = None
