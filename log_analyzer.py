@@ -3,6 +3,7 @@ import sys
 from PyQt5.QtCore import *
 from PyQt5.QtGui import *
 from PyQt5.QtWidgets import *
+import qdarkstyle
 
 from text_handler import ParamDialog, CWindow
 
@@ -32,7 +33,7 @@ class MainWindow(QMainWindow):
 
         """File Line"""
         self.file_line = QLineEdit()
-        self.file_line.setFixedWidth(600)
+        self.file_line.setFixedWidth(580)
         # self.file_line.setEditable(True)
         self.file_line.setPlaceholderText("Directory Path")
         # self.file_line.addItem("C:\\")
@@ -45,14 +46,16 @@ class MainWindow(QMainWindow):
         self.group_layout.addWidget(self.button, alignment=LEFT)
 
         self.label = QLabel("Waiting...")
-        self.label.setStyleSheet("color: red")
+        self.label.setStyleSheet("color: lightGray;"
+                                 "background-color: rgb(128,0,0);"
+                                 "border-radius: 5px")
         sublayout.addWidget(self.label, alignment=LEFT)
 
-        self.btn = QPushButton("Window")
-        sublayout.addWidget(self.btn)
-        self.btn.clicked.connect(self.file_opened)
+        # self.btn = QPushButton("Window")
+        # sublayout.addWidget(self.btn)
+        # self.btn.clicked.connect(self.file_opened)
 
-        self.frame = QTextEdit()
+        self.frame = QPlainTextEdit()
         # self.frame.setStyleSheet("background-color: lightGray")
         # self.frame.setFixedWidth(700)
         self.frame.setReadOnly(True)
@@ -125,14 +128,16 @@ class MainWindow(QMainWindow):
             filenames = dialog.selectedFiles()
             f = open(filenames[0], 'r')
 
-            self.label.setStyleSheet("color: green")
+            self.label.setStyleSheet("color: lightGray;"
+                                     "background-color: rgb(17,102,0);"
+                                     "border-radius: 5px")
             self.label.setText("Opened")
 
             self.file_line.setText(dialog.selectedFiles()[0])
 
             with f:
                 contents = f.read()
-                self.frame.setText(contents)
+                self.frame.setPlainText(contents)
                 self.tab.addTab(self.frame, f.name)
                 # self.frame.insertPlainText(dialog.selectedFiles()[0])
                 # self.frame.insertPlainText("\n")
@@ -143,12 +148,14 @@ class MainWindow(QMainWindow):
 
     def read_file(self):
         f = open(self.file_line.text())
-        self.label.setStyleSheet("color: green")
+        self.label.setStyleSheet("color: lightGray;"
+                                 "background-color: rgb(17,102,0);"
+                                 "border-radius: 5px;")
         self.label.setText("Opened")
 
         with f:
             data = f.read()
-            self.frame.setText(data)
+            self.frame.setPlainText(data)
             # self.frame.insertPlainText(dialog.selectedFiles()[0])
             # self.frame.insertPlainText("\n")
 
@@ -176,6 +183,8 @@ class MainWindow(QMainWindow):
 
 
 app = QApplication(sys.argv)
+app.setStyleSheet(qdarkstyle.load_stylesheet_pyqt5())
+
 window = MainWindow()
 window.setFixedSize(960, 540)
 window.setWindowTitle("Log Analyzer")

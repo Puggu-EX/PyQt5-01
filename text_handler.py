@@ -26,7 +26,7 @@ class ParamDialog(QWidget):
         doc = file
         toggle = False
 
-        if doc.__contains__("/"):
+        if doc.__contains__(":/"):
             doc = doc.replace("/", "\\\\")
             toggle = True
             print(doc)
@@ -57,7 +57,6 @@ class ParamDialog(QWidget):
         self.form_layout.addRow("Content", self.directory_contents)
 
         self.table = QTableWidget(1, 7)
-        self.table.setFixedHeight(50)
         self.scrollbar = QScrollBar()
         self.scrollbar.setHidden(True)
 
@@ -69,14 +68,13 @@ class ParamDialog(QWidget):
         self.table.itemPressed.connect(self.item_something)
 
         self.h_header = QHeaderView(Qt.Horizontal)
-        self.h_header.setHidden(True)
+        self.h_header.setHidden(False)
         self.table.setHorizontalHeader(self.h_header)
         self.v_header = QHeaderView(Qt.Vertical)
         self.v_header.setHidden(True)
         self.table.setVerticalHeader(self.v_header)
 
-
-        self.sub_layout.addWidget(self.table)
+        self.sub_layout.addWidget(self.table, Qt.AlignTop)
 
         # self.diagnose_line = QLabel()
         # self.diagnose_line.setText("Yuh")
