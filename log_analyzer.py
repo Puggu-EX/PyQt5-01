@@ -3,7 +3,6 @@ import sys
 from PyQt5.QtCore import *
 from PyQt5.QtGui import *
 from PyQt5.QtWidgets import *
-import qdarkstyle
 
 from text_handler import ParamDialog, CWindow
 
@@ -48,7 +47,8 @@ class MainWindow(QMainWindow):
         self.label = QLabel("Waiting...")
         self.label.setStyleSheet("color: lightGray;"
                                  "background-color: rgb(128,0,0);"
-                                 "border-radius: 5px")
+                                 "border-radius: 2px;"
+                                 "padding: 1px;")
         sublayout.addWidget(self.label, alignment=LEFT)
 
         # self.btn = QPushButton("Window")
@@ -130,7 +130,8 @@ class MainWindow(QMainWindow):
 
             self.label.setStyleSheet("color: lightGray;"
                                      "background-color: rgb(17,102,0);"
-                                     "border-radius: 5px")
+                                     "border-radius: 2px;"
+                                     "padding: 1px;")
             self.label.setText("Opened")
 
             self.file_line.setText(dialog.selectedFiles()[0])
@@ -150,7 +151,8 @@ class MainWindow(QMainWindow):
         f = open(self.file_line.text())
         self.label.setStyleSheet("color: lightGray;"
                                  "background-color: rgb(17,102,0);"
-                                 "border-radius: 5px;")
+                                 "border-radius: 2px;"
+                                 "padding: 1px;")
         self.label.setText("Opened")
 
         with f:
@@ -183,7 +185,7 @@ class MainWindow(QMainWindow):
 
 
 app = QApplication(sys.argv)
-app.setStyleSheet(qdarkstyle.load_stylesheet_pyqt5())
+# app.setStyleSheet(qdarkstyle.load_stylesheet_pyqt5())
 
 window = MainWindow()
 window.setFixedSize(960, 540)
